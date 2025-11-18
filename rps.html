@@ -12,18 +12,37 @@
 
 <script>
 
-    const randomNumber = getRandomInt(0,2);
+    const randomNumber = getRandomInt(0,3);
+    let computerScore = 0;
+    lethumanScore = 0;
     console.log(randomNumber);
+
+    getComputerChoice();
+    getHumanChoice();
+
+    function playRound(humanSelection, computerSelection) {
+         switch(humanSelection) { 
+            
+         }
+    }
+
+    function getHumanChoice() {
+    const humanChoice = prompt("Choose rock, paper, or scissors");
+    console.log(humanChoice);
+
+    }
 
     function getComputerChoice() {
       const choices = ["rock", "paper", "scissors"];
       const randomNumber = Math.random ();
+      console.log(`choices[randomNumber] is  ${choices[randomNumber]}`);
+      return choices [randomNumber];
     }
 
     function getRandomInt(min, max) {
       const minCeiled = Math.ceil(min);
       const maxFloored = Math.floor(max);
-      return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+      return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
 }
 
 
