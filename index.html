@@ -22,8 +22,25 @@
          //sanitize with toLowerCase()
         switch(humanSelection) { 
             case "rock":
+                switch(computerSelection) {
+                    case "rock":
+                        console.log("It's a tie!");
+                        break;
+                    case "scissors":
+                        humanScore++;
+                        console.log("You win");
+                    case "paper":
+                        computerScore++;
+                        console.log("You lose");
+                }
 
             case "scissors":
+                switch(computerSelection) {
+                    case "rock": 
+                     computerScore++;
+                     console.log("You lose");
+                        break;
+                }
 
             case "paper":
 
