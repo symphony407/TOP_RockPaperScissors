@@ -12,14 +12,14 @@
 
     const randomNumber = getRandomInt(0,3);
     let computerScore = 0;
-    lethumanScore = 0;
+    let humanScore = 0;
     console.log(randomNumber);
 
     getComputerChoice();
     getHumanChoice();
 
     function playRound(humanSelection, computerSelection) {
-         //sanitize with toLowerCase()
+        humanSelection = humanSelection.toLowerCase();
         switch(humanSelection) { 
             case "rock":
                 switch(computerSelection) {
@@ -29,9 +29,11 @@
                     case "scissors":
                         humanScore++;
                         console.log("You win");
+                        break;
                     case "paper":
                         computerScore++;
                         console.log("You lose");
+                        break;
                 }
 
             case "scissors":
@@ -41,7 +43,7 @@
                      console.log("You lose");
                         break;
                     case "scissors": 
-                    consols.log("It's a tie!");
+                    console.log("It's a tie!");
                         break;
                     case "paper":
                     humanScore++;
@@ -49,23 +51,44 @@
                         break;
                 }
 
+
             case "paper":
+                switch(computerSelection) {
+                    case "rock":
+                        humanScore++;
+                        console.log("You win");
+                        break;
+                    case "scissors":
+                        computerScore++;
+                        console.log("You lose");
+                        break;
+                    case "paper":
+                        console.log("It's a tie!");
+                        break;
 
             
-         }
+             }
+        }
     }
-
+    function playGame(humanSelection, computerSelection) {
+        for (let i = 0; i < 5; i++) {
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection);
+        }
+    }
     function getHumanChoice() {
     const humanChoice = prompt("Choose rock, paper, or scissors");
     console.log(humanChoice);
+    return humanChoice.toLowerCase();
 
     }
 
     function getComputerChoice() {
       const choices = ["rock", "paper", "scissors"];
-      const randomNumber = Math.random ();
+      const randomNumber = Math.floor(Math.random() * choices.length);
       console.log(`choices[randomNumber] is  ${choices[randomNumber]}`);
-      return choices [randomNumber];
+      return choices[randomNumber];
     }
 
     function getRandomInt(min, max) {
@@ -73,6 +96,7 @@
       const maxFloored = Math.floor(max);
       return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
 }
+playGame();
 
 
 </script>
